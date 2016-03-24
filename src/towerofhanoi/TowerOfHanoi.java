@@ -8,8 +8,8 @@ public class TowerOfHanoi extends PApplet {
 		PApplet.main(new String[] { towerofhanoi.TowerOfHanoi.class.getName() });
 	}
 
-	private int startHeight = 15, whatIsToMove = -1;
-	private RingsPlaces ringsPlaces;
+	private int startHeight = 5, whatIsToMove = -1;
+	private RingsPlaces ringsPlaces = new RingsPlaces(startHeight, this);
 	private boolean isIHoldingSomething = false;
 
 	public void settings() {
@@ -18,7 +18,6 @@ public class TowerOfHanoi extends PApplet {
 
 	public void setup() {
 		surface.setResizable(true);
-		ringsPlaces = new RingsPlaces(startHeight, this);
 		SetRingsSize();
 	}
 
@@ -32,6 +31,21 @@ public class TowerOfHanoi extends PApplet {
 					drawRectInPlace(ringsPlaces.getRow()[i][g], i, g);
 				}
 			}
+		}
+		drawRingOnMouse();
+	}
+
+	private void drawRingOnMouse() {
+		if (isIHoldingSomething) {
+			ringsPlaces.getRects()[whatIsToMove].setX(mouseX - ringsPlaces.getRects()[whatIsToMove].getWidth() / 2);
+			ringsPlaces.getRects()[whatIsToMove].setY(mouseY - ringsPlaces.getRects()[whatIsToMove].getHeight() / 2);
+			fill(0, 0, 255);
+			stroke(0);
+			strokeWeight(10);
+			rect(ringsPlaces.getRects()[whatIsToMove].getX(), ringsPlaces.getRects()[whatIsToMove].getY(),
+					ringsPlaces.getRects()[whatIsToMove].getWidth(), ringsPlaces.getRects()[whatIsToMove].getHeight());
+			noStroke();
+			fill(0);
 		}
 	}
 
@@ -94,7 +108,7 @@ public class TowerOfHanoi extends PApplet {
 	}
 
 	private void takeRing(int v) {
-		int whatPlaceToMove=-1;
+		int whatPlaceToMove = -1;
 		for (int i = ringsPlaces.getRow()[0].length - 1; i > -1; i--) {
 			if (ringsPlaces.getRow()[v][i] != -1) {
 				whatPlaceToMove = i;
@@ -109,7 +123,7 @@ public class TowerOfHanoi extends PApplet {
 	}
 
 	private void putRing(int v) {
-		int whatPlaceToMove=-1;
+		int whatPlaceToMove = -1;
 		for (int i = ringsPlaces.getRow()[0].length - 1; i > -1; i--) {
 			if (ringsPlaces.getRow()[v][i] != -1) {
 				whatPlaceToMove = i;
@@ -129,7 +143,7 @@ public class TowerOfHanoi extends PApplet {
 		}
 	}
 
-	private void moveRing(int i,int g) {
+	private void moveRing(int i, int g) {
 		takeRing(i);
 		putRing(g);
 	}
