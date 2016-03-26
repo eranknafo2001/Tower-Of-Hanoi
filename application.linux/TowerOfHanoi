@@ -1,0 +1,4 @@
+#!/bin/sh
+
+APPDIR=$(dirname "$0")
+java  -Djava.library.path="$APPDIR" -cp "$APPDIR/lib/TowerOfHanoi.jar:$APPDIR/lib/dxf.jar:$APPDIR/lib/net.jar:$APPDIR/lib/itext.jar:$APPDIR/lib/pdf.jar:$APPDIR/lib/jssc.jar:$APPDIR/lib/serial.jar:$APPDIR/lib/batik-awt-util-1.8.jar:$APPDIR/lib/batik-dom-1.8.jar:$APPDIR/lib/batik-ext-1.8.jar:$APPDIR/lib/batik-svggen-1.8.jar:$APPDIR/lib/batik-util-1.8.jar:$APPDIR/lib/batik-xml-1.8.jar:$APPDIR/lib/svg.jar:$APPDIR/lib/ant-launcher.jar:$APPDIR/lib/ant.jar:$APPDIR/lib/jna.jar:$APPDIR/lib/core.jar" towerofhanoi.TowerOfHanoi
