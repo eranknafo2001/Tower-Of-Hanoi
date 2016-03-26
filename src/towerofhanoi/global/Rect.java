@@ -5,20 +5,24 @@ public class Rect {
 	private int y = 0;
 	private int width = 0;
 	private int height = 0;
+	private int color = 0;
 
-	public Rect(int x1, int y1, int width1, int height1) {
-		x = x1;
-		y = y1;
-		width = width1;
-		height = height1;
+	public Rect(int x, int y, int width, int height, int color) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.color = color;
 	}
+
 	public Rect() {
 		x = 0;
 		y = 0;
 		width = 0;
 		height = 0;
+		color = 0;
 	}
-	
+
 	public boolean pointInShape(int x1, int y1) {
 		if (x1 >= x && x1 <= (x + width) && y1 >= y && y1 <= (y + height)) {
 			return true;
@@ -57,5 +61,13 @@ public class Rect {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	public int getColor() {
+		return color;
+	}
+
+	public void setColor(int color) {
+		this.color = color;
 	}
 }

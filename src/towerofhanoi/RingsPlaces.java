@@ -17,7 +17,7 @@ public class RingsPlaces {
 			s[0] = (towerOfHanoi.width / 16 * 3 + towerOfHanoi.width / 4 * 2 + ((towerOfHanoi.width / 4) / 2) + 5) - 5;
 		}
 
-		s[1] = towerOfHanoi.height - ((getRects()[1].getHeight() + 9) * g + 56);
+		s[1] = towerOfHanoi.height - ((getRects()[1].getHeight() + 9) * ++g + 56);
 		return s;
 
 	}
@@ -28,6 +28,10 @@ public class RingsPlaces {
 		rects = new Rect[rectsLengt];
 		for (int i = 0; i < rects.length; i++) {
 			rects[i] = new Rect();
+			float g = i + 1;
+			float h = g / rects.length;
+			h = h * 255;
+			rects[i].setColor(towerOfHanoi.color(h, 255 - h, 0));
 		}
 		for (int i = 0; i < row.length; i++) {
 			if (i != 0) {
